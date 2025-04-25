@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 import { FaMedal, FaUserMd, FaRegLightbulb, FaRegSmile } from "react-icons/fa"
-import WCU1 from "../../assets/images/wcu1.jpg"
-import WCU2 from "../../assets/images/wcu2.jpg"
-import WCU3 from "../../assets/images/wcu3.jpg"
-import WCU4 from "../../assets/images/wcu4.jpg"
+import WCU1 from "../../assets/images/WCU1.jpg"
+import WCU2 from "../../assets/images/WCU2.jpg"
+import WCU3 from "../../assets/images/WCU3.jpg"
+import WCU4 from "../../assets/images/WCU4.jpg"
 
 const WhyChooseUs = () => {
   const sectionRef = useRef(null)
