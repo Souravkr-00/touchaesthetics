@@ -92,7 +92,7 @@ const Banner = () => {
                 }`}
               >
                 <p className="text-[#c8a287] font-medium text-sm">Certified Specialists</p>
-                <p className="text-[#7d6e63] text-xs">20+ Years Experience</p>
+                <p className="text-[#7d6e63] text-xs">10+ Years Experience</p>
               </div>
             </div>
           </div>

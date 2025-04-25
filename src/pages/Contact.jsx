@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import contact from "../assets/images/contact.jpg";
 import map from "../assets/images/map.png";
 import contactbanner from "../assets/images/contactbanner.jpg";
+import emailjs from '@emailjs/browser';
+
 export default function Contact() {
   const [isVisible, setIsVisible] = useState({
     hero: false,
@@ -24,6 +26,8 @@ export default function Contact() {
   const [activeLocation, setActiveLocation] = useState(0);
   const [activeFaq, setActiveFaq] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
   
   // Create refs for each section
   const heroRef = useRef(null);
@@ -32,6 +36,7 @@ export default function Contact() {
   const locationsRef = useRef(null);
   const faqRef = useRef(null);
   const ctaRef = useRef(null);
+  const emailFormRef = useRef();
   
   useEffect(() => {
     // Check if viewport is mobile
@@ -87,17 +92,53 @@ export default function Contact() {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically handle the form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-      service: 'General Inquiry'
+    setIsSubmitting(true);
+    setSubmitStatus({ success: false, message: '' });
+    
+    // Prepare template parameters for EmailJS
+    const templateParams = {
+      to_email: 'cash.souravkr12@gmail.com',
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone, 
+      subject: formData.subject,
+      message: formData.message,
+      service: formData.service
+    };
+    
+    // Replace these with your actual EmailJS service ID, template ID, and public key
+    emailjs.send(
+      'service_h2yiz34', // Replace with your EmailJS service ID
+      'template_h6x2ulc', // Replace with your EmailJS template ID
+      templateParams,
+      'zB_bhd03Tc8V5OIFE' // Replace with your EmailJS public key
+    )
+    .then((response) => {
+      console.log('Email sent successfully:', response);
+      setSubmitStatus({
+        success: true,
+        message: 'Thank you for your message! We will get back to you soon.'
+      });
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        service: 'General Inquiry'
+      });
+      
+      setIsSubmitting(false);
+    })
+    .catch((error) => {
+      console.error('Failed to send email:', error);
+      setSubmitStatus({
+        success: false,
+        message: 'Sorry, there was an error sending your message. Please try again later.'
+      });
+      setIsSubmitting(false);
     });
   };
 
@@ -142,7 +183,6 @@ export default function Contact() {
 
   // Location data
   const locations = [
-    
     {
       id: 1,
       city: "Delhi",
@@ -152,7 +192,6 @@ export default function Contact() {
       hours: "Mon-Sat: 9:00 AM - 8:00 PM\nSun: 10:00 AM - 5:00 PM",
       map: map
     },
-    
   ];
 
   // FAQ data
@@ -252,7 +291,13 @@ export default function Contact() {
                 Fill out the form below and our team will get back to you as soon as possible.
               </p>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              {submitStatus.message && (
+                <div className={`p-4 mb-6 rounded-lg ${submitStatus.success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                  {submitStatus.message}
+                </div>
+              )}
+              
+              <form ref={emailFormRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-[#5d5149] font-medium mb-2">Full Name</label>
@@ -343,9 +388,10 @@ export default function Contact() {
                 <div>
                   <button 
                     type="submit"
-                    className="w-full md:w-auto px-8 py-3 bg-[#b2a192] hover:bg-[#a89a91] text-white font-medium rounded-lg transition-colors duration-300 shadow-md"
+                    disabled={isSubmitting}
+                    className={`w-full md:w-auto px-8 py-3 bg-[#b2a192] hover:bg-[#a89a91] text-white font-medium rounded-lg transition-colors duration-300 shadow-md ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </button>
                 </div>
               </form>
@@ -396,7 +442,6 @@ export default function Contact() {
                style={{ transitionDelay: isVisible.locations ? '200ms' : '0ms' }}>
             <div className="flex flex-wrap justify-center gap-4">
               {locations.map((location, index) => (
-
                 <button
                   key={location.id}
                   onClick={() => setActiveLocation(index)}
@@ -406,9 +451,7 @@ export default function Contact() {
                       : 'bg-[#e8e2db] text-[#7d6e63] hover:bg-[#d8d0c7]'
                   }`}
                 >
-                
                   {location.city}
-                
                 </button>
               ))}
             </div>
@@ -456,7 +499,6 @@ export default function Contact() {
               
               <div className="mt-6">
                 <a href='https://www.google.co.in/maps/place/TOUCHE+AESTHETICS/@28.5665661,77.218044,16.11z/data=!4m6!3m5!1s0x390ce329e911b6db:0x195d4775acfaa380!8m2!3d28.5663962!4d77.2208124!16s%2Fg%2F11x11_9dkc?entry=ttu&g_ep=EgoyMDI1MDQyMi4wIKXMDSoASAFQAw%3D%3D' target='_blank' rel="noopener noreferrer">
-
                 <button className="px-6 py-3 bg-[#b2a192] hover:bg-[#a89a91] text-white font-medium rounded-lg transition-colors duration-300 shadow-md">
                   Get Directions
                 </button>
