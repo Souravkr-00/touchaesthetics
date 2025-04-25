@@ -1,4 +1,4 @@
-"use client"
+
 
 import { useEffect, useRef, useState } from "react"
 import { FaMedal, FaUserMd, FaRegLightbulb, FaRegSmile } from "react-icons/fa"
