@@ -408,7 +408,7 @@ export default function Contact() {
                 <h3 className="text-xl font-semibold text-[#5d5149] mb-4">Business Hours</h3>
                 <div className="space-y-2 text-[#7d6e63]">
                   <div className="flex justify-between">
-                    <span>Monday - Friday</span>
+                    <span>Tuesday - Friday</span>
                     <span>9:00 AM - 8:00 PM</span>
                   </div>
                   <div className="flex justify-between">

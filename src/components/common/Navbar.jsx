@@ -86,7 +86,7 @@ const Navbar = () => {
           </div>
 
           {/* Book Appointment Button */}
-          <a href='/contact'>
+          <a href='/appointmentbooking'>
 
           <button
             className="hidden md:inline-flex bg-rose-100 text-rose-900 hover:bg-rose-200 px-4 py-2 rounded-md text-sm font-medium transition-colors"
