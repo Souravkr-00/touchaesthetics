@@ -4,7 +4,7 @@ import service2 from "../../assets/images/service2.jpg";
 import service3 from "../../assets/images/service3.jpg";
 import service4 from "../../assets/images/service4.jpg";
 
-export default function ServicesPreview() {
+export default function TreatmentsSection() {
   const [isVisible, setIsVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
@@ -40,21 +40,21 @@ export default function ServicesPreview() {
   const services = [
     {
       id: 1,
-      title: "Facial Treatments",
+      title: "Skincare Treatments",
       description: "Rejuvenate your skin with our premium facial treatments tailored to your specific skin concerns.",
       price: "$79",
       image: service1
     },
     {
       id: 2,
-      title: "Hair Restoration",
+      title: "Hair Treatments",
       description: "Advanced treatments to promote natural hair growth and restore thickness and volume.",
       price: "$129",
       image: service2
     },
     {
       id: 3,
-      title: "Skin Analysis",
+      title: "Laser Treatments",
       description: "Detailed skin analysis using cutting-edge technology to identify your unique skin needs.",
       price: "$49",
       image: service3
@@ -69,32 +69,24 @@ export default function ServicesPreview() {
   ];
 
   return (
-    <div className="bg-cream-50 py-16 px-4 md:px-8 lg:px-16">
+    <div className=" py-16 px-4 md:px-8 lg:px-16">
       <div ref={sectionRef} className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
-          <div className={`text-center md:text-left transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-[#b08e75] mb-6 leading-tight">
-                Our Premium Services
+          <div className={`w-full text-center md:text-left transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="w-full text-center text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-serif font-light text-gray-800 mb-6 leading-tight text-zinc-800 font-serif font-light text-gray-800 mb-6 leading-tight">
+                Our Premium Treatments
               </h2>
 
-            <p className={`text-[#7d6e63] transition-all duration-1000 ${
+            <p className={`w-full text-sm md:text-md
+            lg:text-md xl:text-md text-center text-gray-900 transition-all duration-1000 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`} style={{ transitionDelay: "200ms" }}>
                 Discover our range of specialized skin and hair treatments designed to enhance your natural beauty.
               </p>
           </div>
-          
-          <div className={`mt-6 md:mt-0 text-center md:text-right transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: isVisible ? '150ms' : '0ms' }}>
-            <button className="inline-flex items-center px-6 py-3 bg-cream-400 hover:bg-cream-500 text-brown-800 font-medium rounded-lg transition-colors duration-300">
-              Explore All Services
-              <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-          </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 m-auto align-items-center justify-items-center">
           {services.map((service, index) => (
             <ServiceCard 
               key={service.id} 
@@ -133,7 +125,7 @@ function ServiceCard({ service, isVisible, index, isMobile }) {
   
   return (
     <div 
-      className={`relative h-96 rounded-lg shadow-lg overflow-hidden transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${isMobile ? 'cursor-pointer' : ''}`}
+      className={`relative w-60 h-60  shadow-lg overflow-hidden transition-all duration-700 transform ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'} ${isMobile ? 'cursor-pointer' : ''}`}
       style={{ transitionDelay: isVisible ? `${(index + 2) * 150}ms` : '0ms' }}
       onMouseEnter={() => !isMobile && setIsHovered(true)}
       onMouseLeave={() => !isMobile && setIsHovered(false)}
@@ -151,7 +143,7 @@ function ServiceCard({ service, isVisible, index, isMobile }) {
       
       {/* Service title always visible at bottom */}
       <div className="absolute bottom-0 left-0 right-0 p-6">
-        <h3 className="text-xl font-medium text-white mb-2">{service.title}</h3>
+        <h3 className="text-lg font-light text-white mb-2 text-center">{service.title}</h3>
       </div>
       
       {/* Content overlay that appears on hover/tap */}

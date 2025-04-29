@@ -51,7 +51,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer ref={footerRef} className="w-full bg-gradient-to-b from-[#fcf7f4] to-[#f7efe9] pt-16 overflow-hidden">
+    <footer ref={footerRef} className="w-full bg-[white] border-t border-[#e9d5c9] pt-16 overflow-hidden shadow-xl/10">
       {/* Top section with columns */}
       <div className="w-full mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
@@ -69,7 +69,7 @@ const Footer = () => {
               </a>
             </div>
             
-            <p className="text-[#7d6e63] mb-6">
+            <p className="text-zinc-900 mb-6">
               Dedicated to enhancing your natural beauty through advanced skin and hair treatments in a serene, professional environment.
             </p>
             
@@ -112,15 +112,15 @@ const Footer = () => {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <h3 className="text-[#b08e75] font-medium text-lg mb-6">Quick Links</h3>
+            <h3 className="text-zinc-800 font-serif font-light text-lg mb-6">Quick Links</h3>
             <ul className="space-y-3">
               {["Home", "About Us", "Our Services", "Our Doctors", "Book Appointment", "Contact Us", "Blog", "FAQs"].map((link, index) => (
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-[#7d6e63] hover:text-[#c8a287] transition-colors duration-300 flex items-center"
+                    className="text-zinc-600 hover:text-gray-900 transition-colors duration-300 flex items-center"
                   >
-                    <FaChevronRight className="mr-2 text-xs text-[#c8a287]" />
+                    <FaChevronRight className="mr-2 text-xs text-zinc-600 hover:text-gray-900 " />
                     {link}
                   </a>
                 </li>
@@ -135,7 +135,7 @@ const Footer = () => {
             }`}
             style={{ transitionDelay: "400ms" }}
           >
-            <h3 className="text-[#b08e75] font-medium text-lg mb-6">Our Services</h3>
+            <h3 className="text-zinc-800 font-serif font-light text-lg mb-6">Our Services</h3>
             <ul className="space-y-3">
               {[
                 "Skin Care Treatments", 
@@ -150,9 +150,9 @@ const Footer = () => {
                 <li key={index}>
                   <a 
                     href="#" 
-                    className="text-[#7d6e63] hover:text-[#c8a287] transition-colors duration-300 flex items-center"
+                    className="text-zinc-600 hover:text-gray-900  transition-colors duration-300 flex items-center"
                   >
-                    <FaChevronRight className="mr-2 text-xs text-[#c8a287]" />
+                    <FaChevronRight className="mr-2 text-xs text-zinc-600 hover:text-gray-900 " />
                     {service}
                   </a>
                 </li>
@@ -167,35 +167,40 @@ const Footer = () => {
             }`}
             style={{ transitionDelay: "600ms" }}
           >
-            <h3 className="text-[#b08e75] font-medium text-lg mb-6">Contact Us</h3>
+            <h3 className="text-zinc-800 font-serif font-light text-lg mb-6">Contact Us</h3>
             <ul className="space-y-4">
               <li className="flex items-start">
                 <div className="mt-1.5">
-                  <FaMapMarkerAlt className="text-[#c8a287]" />
+                  <FaMapMarkerAlt className="text-zinc-600 hover:text-gray-900 " />
                 </div>
-                <span className="ml-3 text-[#7d6e63]">
+                <span className="ml-3 text-zinc-600 hover:text-gray-900 ">
                   A/41, South Extension Part-2, New Delhi - 110049, India
                 </span>
               </li>
               <li className="flex items-center">
-                <FaPhoneAlt className="text-[#c8a287]" />
-                <a href="tel:+919220546827" className="ml-3 text-[#7d6e63] hover:text-[#c8a287] transition-colors duration-300">
+                <FaPhoneAlt className="text-zinc-600 hover:text-gray-900 " />
+                <a href="tel:+919220546827" className="ml-3 text-zinc-600 hover:text-gray-900 transition-colors duration-300">
                 +91 9220546827
                 </a>
               </li>
               <li className="flex items-center">
-                <FaEnvelope className="text-[#c8a287]" />
-                <a href="mailto:toucheaesthetics0@gmail.com" className="ml-3 text-[#7d6e63] hover:text-[#c8a287] transition-colors duration-300">
-                toucheaesthetics0@gmail.com
+                <FaEnvelope className="text-zinc-600 hover:text-gray-900 " />
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=toucheaesthetics0@gmail.com&su=Appointment%20Booking&body=Hello%20Team%2C%20I%20am%20interested%20in%20your%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-3 text-zinc-600 hover:text-gray-900  transition-colors duration-300"
+                >
+                  toucheaesthetics0@gmail.com
                 </a>
               </li>
               <li className="flex items-start">
                 <div className="mt-1.5">
-                  <FaClock className="text-[#c8a287]" />
+                  <FaClock className="text-zinc-600 hover:text-gray-900 " />
                 </div>
                 <div className="ml-3">
-                  <p className="text-[#7d6e63]">Mon - Fri: 10:00 AM - 8:00 PM</p>
-                  <p className="text-[#7d6e63]">Sat - Sun: 10:00 AM - 5:00 PM</p>
+                  <p className="text-zinc-600 hover:text-gray-900 ">Mon - Fri: 10:00 AM - 8:00 PM</p>
+                  <p className="text-zinc-600 hover:text-gray-900 ">Sat - Sun: 10:00 AM - 5:00 PM</p>
                 </div>
               </li>
             </ul>
@@ -204,7 +209,7 @@ const Footer = () => {
         
         {/* Newsletter Section */}
         <div 
-          className={`mt-16 bg-white/70 backdrop-blur-sm rounded-lg p-6 md:p-8 shadow-sm transition-all duration-1000 ease-out ${
+          className={`mt-16 bg-white/70 backdrop-blur-sm rounded-lg p-6 md:p-8 shadow-xl/10 transition-all duration-1000 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           style={{ transitionDelay: "800ms" }}

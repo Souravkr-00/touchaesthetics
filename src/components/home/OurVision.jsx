@@ -3,126 +3,139 @@
 import { useEffect, useRef, useState } from "react"
 import { FaHeartbeat } from "react-icons/fa"
 import ourvision from "../../assets/images/ourvision.jpg"
-const OurVision = () => {
+
+function OurVision() {
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        const [entry] = entries
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        } else {
-          // Reset animation when out of view for repeat effect
-          setIsVisible(false)
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            observer.unobserve(entry.target) // Stop observing after it becomes visible
+          }
+        })
       },
       {
-        threshold: 0.15,
-      }
+        threshold: 0.2, // Adjust threshold as needed
+      },
     )
 
-    const currentSection = sectionRef.current
-    if (currentSection) {
-      observer.observe(currentSection)
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
     }
 
     return () => {
-      if (currentSection) {
-        observer.unobserve(currentSection)
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current)
       }
     }
   }, [])
 
   return (
-    <section 
-      ref={sectionRef} 
-      className="w-full py-16 md:py-24 overflow-hidden bg-gradient-to-r from-[#f9f5f2] to-[#fdf8f5]"
-    >
-      <div className="container mx-auto px-4 md:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+    <section ref={sectionRef} className="w-full py-12 md:py-16 overflow-hidden bg-white">
+      <div className="container mx-auto px-4">
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16">
           {/* Left side - Vision image */}
-          <div 
+          <div
             className={`w-full lg:w-1/2 transition-all duration-1000 ease-out ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
             }`}
           >
-            <div className="relative">
+            <div className="relative max-w-md mx-auto lg:max-w-full">
               {/* Main image */}
-              <div className="rounded-lg overflow-hidden shadow-xl">
-                <img 
-                  src={ourvision} 
-                  alt="Our Vision" 
-                  className="w-full h-auto object-cover rounded-lg"
-                  // You'll need to add your actual image path
+              <div className="overflow-hidden shadow-lg">
+                <img
+                  src={ourvision || "/placeholder.svg"}
+                  alt="Our Vision"
+                  className="w-full h-[300px] md:h-[350px] object-cover"
+                  loading="lazy"
                 />
               </div>
-              
+
               {/* Decorative elements */}
-              <div className="absolute -z-10 -bottom-6 -left-6 w-32 h-32 bg-[#e9d5c9] rounded-full opacity-30"></div>
-              <div className="absolute -z-10 -top-6 -right-6 w-40 h-40 bg-[#f3e8e0] rounded-full opacity-50"></div>
-              
+              <div className="absolute -z-10 -bottom-4 -left-4 w-24 h-24 bg-zinc-100 rounded-full opacity-70"></div>
+              <div className="absolute -z-10 -top-4 -right-4 w-28 h-28 bg-zinc-50 rounded-full opacity-80"></div>
+
               {/* Stats badge */}
-              <div className={`absolute bottom-4 right-4 md:bottom-8 md:right-8 bg-white/90 backdrop-blur-sm p-4 rounded-lg shadow-lg z-10 transition-all duration-1000 delay-500 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}>
+              <div
+                className={`absolute bottom-3 right-3 md:bottom-6 md:right-6 bg-white backdrop-blur-sm p-3 shadow-lg z-10 transition-all duration-1000 delay-500 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+              >
                 <div className="flex items-center gap-2">
-                  <FaHeartbeat className="text-[#c8a287] w-5 h-5" />
-                  <span className="text-[#c8a287] font-medium">10+ Years</span>
+                  <FaHeartbeat className="text-zinc-700 w-4 h-4" />
+                  <span className="text-zinc-800 font-medium text-sm">10+ Years</span>
                 </div>
-                <p className="text-[#7d6e63] text-sm mt-1">Of Excellence in Skin Care</p>
+                <p className="text-zinc-600 text-xs mt-1">Excellence in Skin Care</p>
               </div>
             </div>
           </div>
-          
+
           {/* Right side - Vision text */}
-          <div className={`w-full lg:w-1/2 transition-all duration-1000 ease-out ${
-            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
-          }`}>
-            <div className="mb-6">
-              <h4 className="text-[#c8a287] font-medium mb-2 tracking-wider text-lg">OUR VISION</h4>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-[#b08e75] mb-6 leading-tight">
-                Transforming Lives Through Skin Excellence
+          <div
+            className={`w-full lg:w-1/2 transition-all duration-1000 ease-out ${
+              isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-20"
+            }`}
+          >
+            <div className="mb-4">
+              <h4 className="font-serif font-light text-zinc-500 font-medium mb-1 tracking-wider text-lg">OUR VISION</h4>
+              <h2 className="font-serif font-light text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-serif font-light text-gray-800 mb-6 leading-tight">
+                Elevating Natural Beauty
               </h2>
-              
-              <div className="w-20 h-1 bg-gradient-to-r from-[#c8a287] to-[#e9d5c9] mb-6"></div>
+
+              <div className="w-16 h-1 bg-zinc-300 mb-4"></div>
             </div>
-            
-            <div className="space-y-6">
-              <p className={`text-[#7d6e63] transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`} style={{ transitionDelay: "200ms" }}>
-                At our clinic, we envision a world where everyone feels confident in their skin. We believe that healthy, 
-                radiant skin is not just about appearance—it's about feeling your best self and embracing your natural beauty.
+
+            <div className="space-y-4">
+              <p
+                className={`text-zinc-700 transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "200ms" }}
+              >
+                Our vision is to transform the landscape of skin and hair care through science-backed treatments that
+                honor your natural beauty. We believe in enhancing what makes you unique, not conforming to temporary
+                trends.
               </p>
-              
-              <p className={`text-[#7d6e63] transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`} style={{ transitionDelay: "400ms" }}>
-                Our vision extends beyond traditional treatments to create a holistic approach that combines cutting-edge 
-                technology with personalized care, ensuring each client receives the perfect solution for their unique needs.
+
+              <p
+                className={`text-zinc-700 transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "300ms" }}
+              >
+                We strive to create a space where advanced treatments meet personalized care, where each client's
+                journey is as unique as their skin and hair profile.
               </p>
-              
-              <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`} style={{ transitionDelay: "600ms" }}>
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-sm">
-                  <h3 className="text-[#b08e75] font-medium text-lg mb-2">Natural Results</h3>
-                  <p className="text-[#7d6e63] text-sm">We believe in enhancing your natural beauty, not changing who you are.</p>
+
+              <div
+                className={`grid grid-cols-1 md:grid-cols-2 gap-3 mt-6 transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "400ms" }}
+              >
+                <div className="bg-zinc-50 p-3 shadow-sm">
+                  <h3 className="text-zinc-800 font-medium text-base mb-1">Natural Results</h3>
+                  <p className="text-zinc-600 text-xs">Enhancing your beauty, not changing it.</p>
                 </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm p-4 rounded-lg shadow-sm">
-                  <h3 className="text-[#b08e75] font-medium text-lg mb-2">Innovation First</h3>
-                  <p className="text-[#7d6e63] text-sm">We constantly evolve with the latest advances in dermatological science.</p>
+
+                <div className="bg-zinc-50 p-3 shadow-sm">
+                  <h3 className="text-zinc-800 font-medium text-base mb-1">Innovation</h3>
+                  <p className="text-zinc-600 text-xs">Cutting-edge science for optimal care.</p>
                 </div>
               </div>
-              
-              <div className={`mt-8 transition-all duration-1000 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`} style={{ transitionDelay: "800ms" }}>
-                <button className="bg-[#c8a287] hover:bg-[#b08e75] text-white px-8 py-3 rounded-md shadow-sm hover:shadow transition-all duration-300">
-                  Discover Our Approach
+
+              <div
+                className={`mt-6 transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+                }`}
+                style={{ transitionDelay: "600ms" }}
+              >
+                <button className="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2 shadow-sm hover:shadow transition-all duration-300 text-sm">
+                  Learn More
                 </button>
               </div>
             </div>

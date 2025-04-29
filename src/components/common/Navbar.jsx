@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Menu, ChevronDown } from 'lucide-react';
 import logo from "../../assets/images/logo.png"; // Adjust the path as necessary
@@ -28,7 +27,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="sticky top-0 w-full bg-white/80 backdrop-blur-md border-b border-neutral-200 z-50">
+    <nav className="sticky top-0 w-full bg-white backdrop-blur-md border-b border-neutral-200 z-50 shadow-xl/10">
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -38,17 +37,17 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="/" className="text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium transition-colors">
+            <a href="/" className="text-neutral-900 hover:text-neutral-600 px-3 py-2 text-sm font-serif font-light transition-colors">
               Home
             </a>
             
             {/* Services Dropdown */}
             <div className="relative">
               <button 
-                className="flex items-center text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium transition-colors"
+                className="font-serif font-light flex items-center text-neutral-900 hover:text-neutral-600 px-3 py-2 text-sm font-medium transition-colors"
                 onClick={() => setIsServicesOpen(!isServicesOpen)}
               >
-                Services <ChevronDown className="ml-1 h-4 w-4" />
+                Services <ChevronDown className="ml-1 h-4 w-4 font-serif font-light" />
               </button>
               
               {isServicesOpen && (
@@ -73,14 +72,14 @@ const Navbar = () => {
               )}
             </div>
 
-            <a href="/team" className="text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium transition-colors">
+            <a href="/team" className="text-neutral-900 hover:text-neutral-600 px-3 py-2 text-sm font-medium transition-colors font-serif font-light">
               Doctors/Team
             </a>
 
-            <a href="/contact" className="text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium transition-colors">
+            <a href="/contact" className="text-neutral-900 hover:text-neutral-600 px-3 py-2 text-sm font-medium transition-colors font-serif font-light">
               Contact
             </a>
-            <a href="/about" className="text-neutral-600 hover:text-neutral-900 px-3 py-2 text-sm font-medium transition-colors">
+            <a href="/about" className="text-neutral-900 hover:text-neutral-600 px-3 py-2 text-sm font-medium transition-colors font-serif font-light">
               About
             </a>
           </div>
@@ -89,7 +88,7 @@ const Navbar = () => {
           <a href='/appointmentbooking'>
 
           <button
-            className="hidden md:inline-flex bg-rose-100 text-rose-900 hover:bg-rose-200 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+            className="hidden md:inline-flex bg-zinc-800 text-[white] hover:bg-rose-200 px-4 py-2 text-sm font-medium transition-colors cursor-pointer" 
           >
           
             Book Appointment

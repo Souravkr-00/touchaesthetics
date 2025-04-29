@@ -1,4 +1,3 @@
-
 import { useEffect, useRef, useState } from "react"
 import banner1 from "../../assets/images/banner1.jpg"
 const Banner = () => {
@@ -31,30 +30,23 @@ const Banner = () => {
   return (
     <section
       ref={bannerRef}
-      className="w-full bg-gradient-to-r from-[#f9f3ee] to-[#fff8f2] py-16 md:py-24 overflow-hidden"
+      className="w-full bg-white py-8 overflow-hidden"
     >
-      <div className="container mx-auto px-4 md:px-8">
+      <div className="container w-full mx-auto px-4 ">
         <div className="flex flex-col md:flex-row items-center">
           {/* Text Content */}
           <div
-            className={`w-full md:w-1/2 pr-0 md:pr-12 mb-12 md:mb-0 transition-all duration-1000 ease-out ${
+            className={`w-full md:w-1/2 pr-0 md:pr-8 mb-8 md:mb-0 transition-all duration-1000 ease-out ${
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif font-light text-[#c8a287] mb-6 leading-tight">
+            <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl xl:text-3xl font-serif font-light text-gray-800 mb-6 leading-tight text-zinc-800 font-serif font-light text-gray-800 mb-6 leading-tight">
               Discover Your Natural Beauty
             </h2>
 
-            <p className="text-[#7d6e63] mb-6 text-lg leading-relaxed">
-              At Touche Aesthetics, we believe in enhancing your natural beauty through advanced, gentle treatments tailored to
-              your unique needs. Our team of board-certified dermatologists and skincare specialists bring over 20 years
-              of combined experience.
-            </p>
-
-            <p className="text-[#7d6e63] mb-8 text-lg leading-relaxed">
-              We pride ourselves on creating personalized treatment plans that deliver noticeable, natural-looking
-              results. Our patients consistently praise our attentive care, comfortable environment, and exceptional
-              outcomes.
+            <p className="text-zinc-600 mb-4 text-sm leading-relaxed">
+              At Touche Aesthetics, we enhance your natural beauty through advanced treatments tailored to
+              your unique needs with our team of certified dermatologists and specialists.
             </p>
 
             <div
@@ -62,8 +54,8 @@ const Banner = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              <button className="bg-[#c8a287] hover:bg-[#b08e75] text-white px-8 py-3 rounded-full transition-colors duration-300 shadow-sm font-medium text-lg">
-                Meet Our Specialists
+              <button className="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2 transition-colors duration-300 text-sm font-medium">
+                Book an Appointment
               </button>
             </div>
           </div>
@@ -74,25 +66,24 @@ const Banner = () => {
               isVisible ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 scale-95"
             }`}
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative overflow-hidden shadow-md h-74">
               <img
                 src={banner1}
                 alt="Skin care specialist with patient"
-                className="w-full h-auto rounded-2xl object-cover"
+                className="w-full h-full max-h-74 object-cover "
               />
 
-              {/* Decorative elements */}
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#f3e8e0] rounded-full opacity-60"></div>
-              <div className="absolute -top-6 -left-6 w-24 h-24 bg-[#e9d5c9] rounded-full opacity-40"></div>
+              {/* Decorative elements - smaller and more subtle */}
+              <div className="absolute -bottom-4 -right-4 w-20 h-20 bg-gray-100 rounded-full opacity-60"></div>
+              <div className="absolute -top-4 -left-4 w-16 h-16 bg-gray-200 rounded-full opacity-40"></div>
 
-              {/* Floating badge */}
+              {/* Floating badge - simplified */}
               <div
-                className={`absolute top-6 right-6 bg-white/90 backdrop-blur-sm px-4 py-3 rounded-lg shadow-md transition-all duration-1000 delay-500 ${
+                className={`absolute top-4 right-4 bg-white px-3 py-2 shadow-sm transition-all duration-1000 delay-500 ${
                   isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"
                 }`}
               >
-                <p className="text-[#c8a287] font-medium text-sm">Certified Specialists</p>
-                <p className="text-[#7d6e63] text-xs">10+ Years Experience</p>
+                <p className="text-zinc-800 font-medium text-xs">Certified Specialists</p>
               </div>
             </div>
           </div>

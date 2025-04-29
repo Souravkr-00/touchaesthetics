@@ -37,7 +37,7 @@ export default function AppointmentBooking() {
     
     // Prepare the template parameters
     const templateParams = {
-      to_email: "your-business-email@example.com", // Replace with your email
+      to_email: "toucheaesthetics0@gmail.com", // Replace with your email
       from_name: `${formData.firstName} ${formData.lastName}`,
       from_email: formData.email,
       phone: formData.phone,
