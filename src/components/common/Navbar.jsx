@@ -88,7 +88,7 @@ const Navbar = () => {
           <a href='/appointmentbooking'>
 
           <button
-            className="hidden md:inline-flex bg-zinc-800 text-[white] hover:bg-rose-200 px-4 py-2 text-sm font-medium transition-colors cursor-pointer" 
+            className="hidden md:inline-flex bg-zinc-900 text-[white] font-serif font-light hover:bg-zinc-700 px-4 py-2 text-sm font-medium transition-colors cursor-pointer" 
           >
           
             Book Appointment
@@ -153,7 +153,7 @@ const Navbar = () => {
             About
           </a>
           <div className="px-3 py-2">
-            <a href='/contact'>
+            <a href='/appointmentbooking'>
             <button
               className="w-full bg-rose-100 text-rose-900 hover:bg-rose-200 px-4 py-2 rounded-md text-sm font-medium transition-colors"
             >

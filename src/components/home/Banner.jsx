@@ -54,23 +54,26 @@ const Banner = () => {
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
             >
-              <button className="bg-zinc-800 hover:bg-zinc-700 text-white px-6 py-2 transition-colors duration-300 text-sm font-medium">
+            <a href="/appointmentbooking">
+
+              <button className="bg-zinc-900 hover:bg-zinc-700 text-white px-6 py-2 transition-colors duration-300 text-sm font-serif font-light hover:cursor-pointer">
                 Book an Appointment
               </button>
+            </a>
             </div>
           </div>
 
           {/* Image */}
           <div
-            className={`w-full md:w-1/2 transition-all duration-1000 delay-150 ease-out ${
+            className={`w-full md:w-1/2 transition-all duration-1000 delay-150 ease-out  ${
               isVisible ? "opacity-100 translate-x-0 scale-100" : "opacity-0 translate-x-10 scale-95"
             }`}
           >
-            <div className="relative overflow-hidden shadow-md h-74">
+            <div className="relative overflow-hidden shadow-md h-74 ">
               <img
                 src={banner1}
                 alt="Skin care specialist with patient"
-                className="w-full h-full max-h-74 object-cover "
+                className="w-full h-full shadow-xl/10 border-neutral-200 max-h-74 object-cover "
               />
 
               {/* Decorative elements - smaller and more subtle */}

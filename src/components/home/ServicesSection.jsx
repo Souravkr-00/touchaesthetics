@@ -38,14 +38,14 @@ const services = [
     title: 'Chemical Peel',
     description: 'Skin resurfacing treatment that improves texture and tone.',
     rating: 4.6,
-    image: 'https://images.unsplash.com/photo-1612908629998-3ca7b59f02a9?q=80&w=1470&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1731514771613-991a02407132?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: 6,
     title: 'Scalp Treatment',
     description: 'Therapeutic massage and treatment for a healthier scalp and hair.',
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1635333640431-69b2f58884d1?q=80&w=1470&auto=format&fit=crop'
+    image: 'https://cdn.pixabay.com/photo/2021/06/24/12/26/hair-6361059_1280.jpg'
   },
   {
     id: 7,
@@ -88,6 +88,7 @@ const ServicesSection = () => {
             <p className="text-center text-gray-600 max-w-xl" data-aos="fade-right" data-aos-delay="100">
               Discover our premium treatments tailored to enhance your natural beauty and wellness
             </p>
+            
           </div>
         </div>
 
